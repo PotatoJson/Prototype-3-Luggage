@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dal4hmr3sd6vx"]
+
+[ext_resource type="PackedScene" uid="uid://c43lsumc8qmvc" path="res://scenes/luggage.tscn" id="1_o5qli"]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(11, 8)
+
+[node name="Luggage" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(49.636364, 37.625)
