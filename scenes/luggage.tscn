@@ -28,10 +28,13 @@ size = Vector2(25.25, 5)
 size = Vector2(10, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_us723"]
+size = Vector2(20, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhoyr"]
+size = Vector2(23.5, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_715pm"]
+size = Vector2(11, 12)
 
 [node name="Luggage" type="Area2D"]
 script = ExtResource("1_0py5n")
@@ -102,21 +105,29 @@ position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_clm6m")
 
 [node name="Shirt" parent="ItemContainer" instance=ExtResource("3_nogyo")]
+visible = false
 texture_filter = 1
 
 [node name="ItemSprite" parent="ItemContainer/Shirt" index="0"]
+position = Vector2(0, 2.5)
+scale = Vector2(1, 1.15625)
 texture = ExtResource("9_ofway")
 
 [node name="CollisionShape" parent="ItemContainer/Shirt" index="1"]
+position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_us723")
 
 [node name="Pants" parent="ItemContainer" instance=ExtResource("3_nogyo")]
+visible = false
 texture_filter = 1
 
 [node name="ItemSprite" parent="ItemContainer/Pants" index="0"]
+position = Vector2(3, 12.500002)
+scale = Vector2(1.1875, 1.7812501)
 texture = ExtResource("10_du0y1")
 
 [node name="CollisionShape" parent="ItemContainer/Pants" index="1"]
+position = Vector2(3.25, 17)
 shape = SubResource("RectangleShape2D_mhoyr")
 
 [node name="Socks" parent="ItemContainer" instance=ExtResource("3_nogyo")]
@@ -124,9 +135,12 @@ visible = false
 
 [node name="ItemSprite" parent="ItemContainer/Socks" index="0"]
 texture_filter = 1
+position = Vector2(-1.9999986, 1)
+scale = Vector2(0.625, 0.75)
 texture = ExtResource("11_eqe0d")
 
 [node name="CollisionShape" parent="ItemContainer/Socks" index="1"]
+position = Vector2(-3.5, 2)
 shape = SubResource("RectangleShape2D_715pm")
 disabled = true
 
