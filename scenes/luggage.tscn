@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c43lsumc8qmvc"]
+[gd_scene load_steps=20 format=3 uid="uid://c43lsumc8qmvc"]
 
 [ext_resource type="Script" uid="uid://c8o0ubyrjqkas" path="res://scripts/Luggage.gd" id="1_0py5n"]
 [ext_resource type="Texture2D" uid="uid://cvpeb8x3bc4jq" path="res://assets/Closed Suitcase.png" id="1_3emgs"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dwumdbd568nta" path="res://assets/Laptop.png" id="5_sm0rl"]
 [ext_resource type="Texture2D" uid="uid://cetaf7wjrikuu" path="res://assets/Knife.png" id="5_ybwql"]
 [ext_resource type="Texture2D" uid="uid://dgo4dq1or73t3" path="res://assets/Water.png" id="6_ybwql"]
+[ext_resource type="Texture2D" uid="uid://bg664q432hjok" path="res://assets/shirt.png" id="9_ofway"]
+[ext_resource type="Texture2D" uid="uid://bqvqj7lvjufrl" path="res://assets/pants.png" id="10_du0y1"]
+[ext_resource type="Texture2D" uid="uid://bdcrag0w1wi66" path="res://assets/sock.png" id="11_eqe0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3emgs"]
 size = Vector2(99, 74)
@@ -23,6 +26,12 @@ size = Vector2(25.25, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clm6m"]
 size = Vector2(10, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us723"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhoyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_715pm"]
 
 [node name="Luggage" type="Area2D"]
 script = ExtResource("1_0py5n")
@@ -92,7 +101,39 @@ texture = ExtResource("6_ybwql")
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_clm6m")
 
+[node name="Shirt" parent="ItemContainer" instance=ExtResource("3_nogyo")]
+texture_filter = 1
+
+[node name="ItemSprite" parent="ItemContainer/Shirt" index="0"]
+texture = ExtResource("9_ofway")
+
+[node name="CollisionShape" parent="ItemContainer/Shirt" index="1"]
+shape = SubResource("RectangleShape2D_us723")
+
+[node name="Pants" parent="ItemContainer" instance=ExtResource("3_nogyo")]
+texture_filter = 1
+
+[node name="ItemSprite" parent="ItemContainer/Pants" index="0"]
+texture = ExtResource("10_du0y1")
+
+[node name="CollisionShape" parent="ItemContainer/Pants" index="1"]
+shape = SubResource("RectangleShape2D_mhoyr")
+
+[node name="Socks" parent="ItemContainer" instance=ExtResource("3_nogyo")]
+visible = false
+
+[node name="ItemSprite" parent="ItemContainer/Socks" index="0"]
+texture_filter = 1
+texture = ExtResource("11_eqe0d")
+
+[node name="CollisionShape" parent="ItemContainer/Socks" index="1"]
+shape = SubResource("RectangleShape2D_715pm")
+disabled = true
+
 [editable path="ItemContainer/Lighter"]
 [editable path="ItemContainer/Laptop"]
 [editable path="ItemContainer/Knife"]
 [editable path="ItemContainer/WaterBottle"]
+[editable path="ItemContainer/Shirt"]
+[editable path="ItemContainer/Pants"]
+[editable path="ItemContainer/Socks"]
