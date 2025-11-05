@@ -1,40 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://c43lsumc8qmvc"]
+[gd_scene load_steps=5 format=3 uid="uid://c43lsumc8qmvc"]
 
 [ext_resource type="Script" uid="uid://c8o0ubyrjqkas" path="res://scripts/Luggage.gd" id="1_0py5n"]
 [ext_resource type="Texture2D" uid="uid://cvpeb8x3bc4jq" path="res://assets/Closed Suitcase.png" id="1_3emgs"]
 [ext_resource type="Texture2D" uid="uid://cqnr0p20cn800" path="res://assets/Open Suitcase.png" id="2_nogyo"]
-[ext_resource type="PackedScene" uid="uid://bexvgqt0vo23v" path="res://scenes/item.tscn" id="3_nogyo"]
-[ext_resource type="Texture2D" uid="uid://s47ynaeb6oyt" path="res://assets/Lighter.png" id="4_p71gp"]
-[ext_resource type="Texture2D" uid="uid://dwumdbd568nta" path="res://assets/Laptop.png" id="5_sm0rl"]
-[ext_resource type="Texture2D" uid="uid://cetaf7wjrikuu" path="res://assets/Knife.png" id="5_ybwql"]
-[ext_resource type="Texture2D" uid="uid://dgo4dq1or73t3" path="res://assets/Water.png" id="6_ybwql"]
-[ext_resource type="Texture2D" uid="uid://bg664q432hjok" path="res://assets/shirt.png" id="9_ofway"]
-[ext_resource type="Texture2D" uid="uid://bqvqj7lvjufrl" path="res://assets/pants.png" id="10_du0y1"]
-[ext_resource type="Texture2D" uid="uid://bdcrag0w1wi66" path="res://assets/sock.png" id="11_eqe0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3emgs"]
 size = Vector2(99, 74)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm0rl"]
-size = Vector2(2, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0isx"]
-size = Vector2(36, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0py5n"]
-size = Vector2(25.25, 5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_clm6m"]
-size = Vector2(10, 17)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_us723"]
-size = Vector2(20, 31)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhoyr"]
-size = Vector2(23.5, 40)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_715pm"]
-size = Vector2(11, 12)
 
 [node name="Luggage" type="Area2D"]
 script = ExtResource("1_0py5n")
@@ -56,98 +27,3 @@ position = Vector2(2.5, 2)
 shape = SubResource("RectangleShape2D_3emgs")
 
 [node name="ItemContainer" type="Node2D" parent="."]
-
-[node name="Lighter" parent="ItemContainer" instance=ExtResource("3_nogyo")]
-position = Vector2(-17, 3)
-
-[node name="ItemSprite" parent="ItemContainer/Lighter" index="0"]
-texture_filter = 1
-texture = ExtResource("4_p71gp")
-
-[node name="CollisionShape" parent="ItemContainer/Lighter" index="1"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_sm0rl")
-
-[node name="Laptop" parent="ItemContainer" instance=ExtResource("3_nogyo")]
-position = Vector2(19, -7)
-
-[node name="ItemSprite" parent="ItemContainer/Laptop" index="0"]
-texture_filter = 1
-scale = Vector2(3.6, 3.3571427)
-texture = ExtResource("5_sm0rl")
-
-[node name="CollisionShape" parent="ItemContainer/Laptop" index="1"]
-shape = SubResource("RectangleShape2D_r0isx")
-
-[node name="Knife" parent="ItemContainer" instance=ExtResource("3_nogyo")]
-position = Vector2(6, 4)
-
-[node name="ItemSprite" parent="ItemContainer/Knife" index="0"]
-texture_filter = 1
-position = Vector2(1.4305115e-06, 0)
-scale = Vector2(2.5000002, 1.5)
-texture = ExtResource("5_ybwql")
-
-[node name="CollisionShape" parent="ItemContainer/Knife" index="1"]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_0py5n")
-
-[node name="WaterBottle" parent="ItemContainer" instance=ExtResource("3_nogyo")]
-
-[node name="ItemSprite" parent="ItemContainer/WaterBottle" index="0"]
-texture_filter = 1
-position = Vector2(4.7683716e-07, 0)
-scale = Vector2(2.1, 2.9285717)
-texture = ExtResource("6_ybwql")
-
-[node name="CollisionShape" parent="ItemContainer/WaterBottle" index="1"]
-position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_clm6m")
-
-[node name="Shirt" parent="ItemContainer" instance=ExtResource("3_nogyo")]
-visible = false
-texture_filter = 1
-
-[node name="ItemSprite" parent="ItemContainer/Shirt" index="0"]
-position = Vector2(0, 2.5)
-scale = Vector2(1, 1.15625)
-texture = ExtResource("9_ofway")
-
-[node name="CollisionShape" parent="ItemContainer/Shirt" index="1"]
-position = Vector2(0, 5.5)
-shape = SubResource("RectangleShape2D_us723")
-
-[node name="Pants" parent="ItemContainer" instance=ExtResource("3_nogyo")]
-visible = false
-texture_filter = 1
-
-[node name="ItemSprite" parent="ItemContainer/Pants" index="0"]
-position = Vector2(3, 12.500002)
-scale = Vector2(1.1875, 1.7812501)
-texture = ExtResource("10_du0y1")
-
-[node name="CollisionShape" parent="ItemContainer/Pants" index="1"]
-position = Vector2(3.25, 17)
-shape = SubResource("RectangleShape2D_mhoyr")
-
-[node name="Socks" parent="ItemContainer" instance=ExtResource("3_nogyo")]
-visible = false
-
-[node name="ItemSprite" parent="ItemContainer/Socks" index="0"]
-texture_filter = 1
-position = Vector2(-1.9999986, 1)
-scale = Vector2(0.625, 0.75)
-texture = ExtResource("11_eqe0d")
-
-[node name="CollisionShape" parent="ItemContainer/Socks" index="1"]
-position = Vector2(-3.5, 2)
-shape = SubResource("RectangleShape2D_715pm")
-disabled = true
-
-[editable path="ItemContainer/Lighter"]
-[editable path="ItemContainer/Laptop"]
-[editable path="ItemContainer/Knife"]
-[editable path="ItemContainer/WaterBottle"]
-[editable path="ItemContainer/Shirt"]
-[editable path="ItemContainer/Pants"]
-[editable path="ItemContainer/Socks"]

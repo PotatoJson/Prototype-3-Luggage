@@ -1,46 +1,80 @@
 # Luggage.gd
+# This script only handles opening the luggage and spawning the items.
 extends Area2D
 
-# --- Node References ---
-# Make sure your node names in the Scene tree match these variables!
+const ITEM_SCENE = preload("res://scenes/Item.tscn")
+
+var common_items = [
+	"res://assets/pants.png",
+	"res://assets/Laptop.png",
+	"res://assets/Sock.png",
+	"res://assets/shirt.png"
+]
+var rare_items = [
+	"res://assets/Lighter.png",
+	"res://assets/Water.png",
+	"res://assets/Knife.png"
+]
+
 @onready var sprite_closed = $SpriteClosed
 @onready var sprite_open = $SpriteOpen
 @onready var item_container = $ItemContainer
-@onready var collision_shape = $CollisionShape # The main collision for the luggage
+@onready var collision_shape = $CollisionShape
 
-# --- State Variable ---
-# This tracks if the luggage is open or closed.
 var is_open = false
 
-# _ready() runs once when the game starts.
+# --- CORE FUNCTIONS ---
+
 func _ready():
-	# Set the initial "closed" state.
 	sprite_closed.visible = true
 	sprite_open.visible = false
-	
-	# Hide all items by hiding their parent container.
 	item_container.visible = false
-	
-	# Make sure the main collision is ON, so we can click the luggage.
 	collision_shape.disabled = false
+	populate_luggage()
 
-# This function runs when the Luggage's own CollisionShape is clicked.
 func _input_event(viewport, event, shape_idx):
-	# Check if we're not already open AND if the mouse was just clicked.
+	# This click event is for the LUGGAGE ONLY.
 	if not is_open and event is InputEventMouseButton and event.is_pressed():
-		# Call the function to open the suitcase.
 		open_luggage()
 
-# This function handles the switch from "closed" to "open".
 func open_luggage():
 	is_open = true
-	
-	# Swap the sprites.
 	sprite_closed.visible = false
 	sprite_open.visible = true
-	
-	# Show all the items by making their parent container visible.
 	item_container.visible = true
+	collision_shape.disabled = true # Disables the luggage's *own* shape
+
+# --- ITEM SPAWNING ---
+
+func populate_luggage():
+	var common_amount = randi_range(3, 5)
+	for i in common_amount:
+		var random_texture_path = common_items.pick_random()
+		spawn_item(random_texture_path)
+
+	if randf() < 0.5:
+		var random_texture_path = rare_items.pick_random()
+		spawn_item(random_texture_path)
+
+func spawn_item(texture_path: String):
+	var item_instance = ITEM_SCENE.instantiate()
 	
-	# Disable the luggage's main collision shape.
-	collision_shape.disabled = true
+	var sprite = item_instance.get_node("ItemSprite")
+	sprite.texture = load(texture_path)
+	
+	var texture_size = sprite.texture.get_size()
+	var new_shape = RectangleShape2D.new()
+	new_shape.size = texture_size * 0.75
+	
+	var collision_shape_node = item_instance.get_node("CollisionShape")
+	collision_shape_node.shape = new_shape
+	collision_shape_node.disabled = false # Make sure hitbox is on
+	
+	var random_x = randf_range(-50, 50)
+	var random_y = randf_range(-30, 30)
+	item_instance.position = Vector2(random_x, random_y)
+	
+	var start_z = randi_range(1, 5)
+	item_instance.z_index = start_z
+	
+	item_container.add_child(item_instance)
