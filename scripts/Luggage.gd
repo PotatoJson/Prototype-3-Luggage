@@ -1,15 +1,19 @@
 # Luggage.gd
 extends Area2D
+class_name Luggage
 
 const ITEM_SCENE = preload("res://scenes/Item.tscn")
 
 var common_items = [
 	"res://assets/pants.png",
-	"res://assets/Laptop.png",
 	"res://assets/Sock.png",
-	"res://assets/shirt.png"
+	"res://assets/shirt.png",
+	"res://assets/WaterEmpty.png"
 ]
 var rare_items = [
+	"res://assets/Laptop.png"
+]
+var contraband = [
 	"res://assets/Lighter.png",
 	"res://assets/Water.png",
 	"res://assets/Knife.png"
@@ -25,6 +29,8 @@ var is_open = false
 # --- CORE FUNCTIONS ---
 
 func _ready():
+	print("--- LUGGAGE SCRIPT: _ready() has started. ---")
+	
 	sprite_closed.visible = true
 	sprite_open.visible = false
 	item_container.visible = false
@@ -42,21 +48,31 @@ func open_luggage():
 	sprite_open.visible = true
 	item_container.visible = true
 	collision_shape.disabled = true # Disables the luggage's *own* shape
+	
+func get_all_remaining_items():
+	return item_container.get_children()
 
 # --- ITEM SPAWNING ---
 
 func populate_luggage():
-	var common_amount = randi_range(3, 5)
+	var common_amount = randi_range(20, 30)
 	for i in common_amount:
 		var random_texture_path = common_items.pick_random()
-		spawn_item(random_texture_path)
+		spawn_item(random_texture_path, false)
 
 	if randf() < 1:
 		var random_texture_path = rare_items.pick_random()
-		spawn_item(random_texture_path)
+		spawn_item(random_texture_path, false)
+		
+	var contraband_amount = randi_range(0, 3)
+	for i in contraband_amount:
+		var random_texture_path = contraband.pick_random()
+		spawn_item(random_texture_path, true)
 
-func spawn_item(texture_path: String):
+func spawn_item(texture_path: String, is_contraband_item: bool):
 	var item_instance = ITEM_SCENE.instantiate()
+	
+	item_instance.is_contraband = is_contraband_item
 	
 	var sprite = item_instance.get_node("ItemSprite")
 	sprite.texture = load(texture_path)
