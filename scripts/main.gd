@@ -1,7 +1,6 @@
-# Main.gd (Simplified Reloading Version)
+# Main.gd
 extends Node2D
 
-# We only need a reference to the button and the luggage
 @onready var approve_button = $CanvasLayer/ApproveButton
 @onready var current_luggage = $Luggage as Luggage # Find the luggage in the scene
 
@@ -34,7 +33,6 @@ func _on_approve_pressed():
 	
 	if remaining_contraband == 0:
 		print("Main.gd: Correct! Reloading scene.")
-		# This is the only line we need to restart!
 		get_tree().reload_current_scene()
 	else:
 		print("Main.gd: Incorrect! You missed %s contraband." % remaining_contraband)
