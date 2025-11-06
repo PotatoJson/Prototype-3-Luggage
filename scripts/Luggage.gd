@@ -2,11 +2,11 @@
 extends Area2D
 class_name Luggage
 
-const ITEM_SCENE = preload("res://scenes/Item.tscn")
+const ITEM_SCENE = preload("res://scenes/item.tscn")
 
 var common_items = [
 	"res://assets/pants.png",
-	"res://assets/Sock.png",
+	"res://assets/sock.png",
 	"res://assets/shirt.png",
 	"res://assets/WaterEmpty.png"
 ]
