@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c43lsumc8qmvc"]
 
-[ext_resource type="Script" uid="uid://c8o0ubyrjqkas" path="res://scripts/Luggage.gd" id="1_0py5n"]
+[ext_resource type="Script" uid="uid://c8o0ubyrjqkas" path="res://scripts/luggage.gd" id="1_0py5n"]
 [ext_resource type="Texture2D" uid="uid://cvpeb8x3bc4jq" path="res://assets/Closed Suitcase.png" id="1_3emgs"]
 [ext_resource type="Texture2D" uid="uid://cqnr0p20cn800" path="res://assets/Open Suitcase.png" id="2_nogyo"]
 
