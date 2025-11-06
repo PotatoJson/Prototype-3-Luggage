@@ -1,5 +1,4 @@
 # Luggage.gd
-# This script only handles opening the luggage and spawning the items.
 extends Area2D
 
 const ITEM_SCENE = preload("res://scenes/Item.tscn")
@@ -52,7 +51,7 @@ func populate_luggage():
 		var random_texture_path = common_items.pick_random()
 		spawn_item(random_texture_path)
 
-	if randf() < 0.5:
+	if randf() < 1:
 		var random_texture_path = rare_items.pick_random()
 		spawn_item(random_texture_path)
 
