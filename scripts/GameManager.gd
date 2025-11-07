@@ -26,13 +26,13 @@ func process_luggage_result(contraband_missed: int, good_items_trashed: int):
 	var time_taken_sec = (Time.get_ticks_msec() - round_start_time) / 1000.0
 	
 	var time_penalty = int(time_taken_sec * 200) 
-	var contraband_penalty = contraband_missed * 2500 # 2500 points per contraband missed
+	var contraband_penalty = contraband_missed * 5000 # 2500 points per contraband missed
 	var trash_penalty = good_items_trashed * 500     # 500 points per good item trashed
 	var mistake_penalty = contraband_penalty + trash_penalty
 	
 	var round_score = 10000 - time_penalty - mistake_penalty
 	
-	total_score += max(0, round_score)
+	total_score += round_score
 	
 	print("Round %s complete. Mistakes: %s missed, %s trashed. Score: %s, Total: %s" % [current_round, contraband_missed, good_items_trashed, round_score, total_score])
 	
