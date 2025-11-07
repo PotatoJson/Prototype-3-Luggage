@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp0n1uqmbsmqs"]
+
+[ext_resource type="Script" uid="uid://i334op6riwbw" path="res://scripts/EndScreen.gd" id="1_kq7ac"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kq7ac")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 755.0
+offset_right = 869.0
+offset_bottom = 24.0
+
+[node name="MissedLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 755.0
+offset_top = 32.0
+offset_right = 869.0
+offset_bottom = 56.0
+
+[node name="TrashedLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 755.0
+offset_top = 64.0
+offset_right = 869.0
+offset_bottom = 88.0
+
+[node name="PlayAgainButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 756.0
+offset_top = 324.0
+offset_right = 844.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again"

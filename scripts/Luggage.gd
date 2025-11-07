@@ -55,6 +55,12 @@ func get_all_remaining_items():
 # --- ITEM SPAWNING ---
 
 func populate_luggage():
+	
+	var contraband_amount = randi_range(0, 3)
+	for i in contraband_amount:
+		var random_texture_path = contraband.pick_random()
+		spawn_item(random_texture_path, true)
+	
 	var common_amount = randi_range(20, 30)
 	for i in common_amount:
 		var random_texture_path = common_items.pick_random()
@@ -63,11 +69,6 @@ func populate_luggage():
 	if randf() < 1:
 		var random_texture_path = rare_items.pick_random()
 		spawn_item(random_texture_path, false)
-		
-	var contraband_amount = randi_range(0, 3)
-	for i in contraband_amount:
-		var random_texture_path = contraband.pick_random()
-		spawn_item(random_texture_path, true)
 
 func spawn_item(texture_path: String, is_contraband_item: bool):
 	var item_instance = ITEM_SCENE.instantiate()

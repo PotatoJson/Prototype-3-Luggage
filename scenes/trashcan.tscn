@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://del15cit158x2"]
+[gd_scene load_steps=4 format=3 uid="uid://del15cit158x2"]
 
+[ext_resource type="Script" uid="uid://cfhjqlmjuv5wy" path="res://scripts/Trashcan.gd" id="1_1btkc"]
 [ext_resource type="Texture2D" uid="uid://us1uns2trtqb" path="res://assets/TrashCan.png" id="1_dqkxp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1btkc"]
@@ -7,6 +8,7 @@ radius = 15.0
 height = 92.0
 
 [node name="Trashcan" type="Area2D" groups=["Trashcan"]]
+script = ExtResource("1_1btkc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.5, -1)
