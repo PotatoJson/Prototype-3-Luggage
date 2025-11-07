@@ -61,7 +61,7 @@ func populate_luggage():
 		var random_texture_path = contraband.pick_random()
 		spawn_item(random_texture_path, true)
 	
-	var common_amount = randi_range(20, 30)
+	var common_amount = randi_range(10, 20)
 	for i in common_amount:
 		var random_texture_path = common_items.pick_random()
 		spawn_item(random_texture_path, false)
